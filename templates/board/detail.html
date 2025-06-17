@@ -1,7 +1,22 @@
-{% if question %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
     <h1>{{ question.subject }}</h1>
     <p>{{ question.content }}</p>
     <p>작성일: {{ question.created_at }}</p>
-{% else %}
-    <p>질문이 없습니다.</p>
-{% endif %}
+    <div>
+        <ul>
+            {% for answer in question.answer_set.all %}
+                <li>{{ answer.content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <form method = 'post' action = '{% url "board:create_answer" question.id %}'>
+        {% csrf_token %}
+        <textarea name="content" rows = "20"></textarea>
+        <input type = "submit" value = "댓글 작성">
+    </form>
+</div>
+
+{% endblock %}
