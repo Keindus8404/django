@@ -1,0 +1,11 @@
+{% if questions %}
+    <h1>질문 목록</h1>
+    <ul>
+        {% for question in questions %}
+            <li><a href='{% url "board:question_detail" question.id %}'>
+                {{ question.subject }} - {{ question.created_at }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}

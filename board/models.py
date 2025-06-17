@@ -11,7 +11,7 @@ class Question(models.Model):
         return self.subject # 질문 제목을 문자열로 반환
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE) # 질문과의 관계 설정
+    question = models.ForeignKey(Question, on_delete=models.CASCADE) # 질문과의 관계 설정. 부모(질문)이 삭제되면 답변도 삭제됨
     content = models.TextField() # 답변 내용
     created_at = models.DateTimeField(auto_now_add=True) # 답변 작성 시간
     updated_at = models.DateTimeField(auto_now=True) # 답변 수정 시간

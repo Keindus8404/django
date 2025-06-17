@@ -1,0 +1,7 @@
+{% if question %}
+    <h1>{{ question.subject }}</h1>
+    <p>{{ question.content }}</p>
+    <p>작성일: {{ question.created_at }}</p>
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}

@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from board import views
+from django.urls import include  # include 함수를 가져옵니다.
+# from board import views  # board 앱의 views 모듈을 가져옵니다.
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test/abc/', views.index),  # test/abc/ 경로로 요청이 들어오면 index 함수 호출
+    # path('board/', views.index)  # views.py 파일의 index 함수를 의미
+    path('board/', include('board.urls')),  # board 앱의 urls.py 파일을 포함
 ]
